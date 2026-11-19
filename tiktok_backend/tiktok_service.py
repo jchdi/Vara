@@ -1,8 +1,6 @@
-
 from TikTokLive import TikTokLiveClient
 from TikTokLive.events import CommentEvent
 
-# One connection per game session
 active_clients = {}
 
 
@@ -29,13 +27,27 @@ async def start_tiktok_live(username, session_id, on_comment):
 
     client.add_listener(CommentEvent, handle_comment)
 
-    task = await client.start()
-
-    active_clients[session_id] = {
+    connection = {
         "username": username,
         "client": client,
-        "task": task
+        "task": None
     }
+
+    active_clients[session_id] = connection
+
+    try:
+        task = await client.start()
+        connection["task"] = task
+
+        def cleanup(_):
+            if active_clients.get(session_id) is connection:
+                active_clients.pop(session_id, None)
+
+        task.add_done_callback(cleanup)
+
+    except Exception:
+        active_clients.pop(session_id, None)
+        raise
 
     return {
         "status": "connecting",
@@ -51,6 +63,7 @@ async def stop_tiktok_live(session_id):
         return {"status": "not_connected"}
 
     await connection["client"].disconnect()
+
     active_clients.pop(session_id, None)
 
     return {"status": "disconnected"}
