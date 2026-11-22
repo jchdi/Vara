@@ -1,3 +1,4 @@
+
 from TikTokLive import TikTokLiveClient
 from TikTokLive.events import CommentEvent
 
@@ -19,10 +20,20 @@ async def start_tiktok_live(username, session_id, on_comment):
         if event.user is None:
             return
 
+        # Get the commenter's profile picture URL
+        avatar_url = None
+        avatar = getattr(event.user, "avatar_thumb", None)
+
+        if avatar:
+            urls = getattr(avatar, "url_list", None)
+            if urls:
+                avatar_url = urls[0]
+
         await on_comment({
             "username": event.user.unique_id,
             "nickname": event.user.nickname,
-            "comment": event.comment
+            "comment": event.comment,
+            "avatar_url": avatar_url
         })
 
     client.add_listener(CommentEvent, handle_comment)
