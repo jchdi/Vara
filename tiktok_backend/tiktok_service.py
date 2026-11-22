@@ -17,21 +17,24 @@ async def start_tiktok_live(username, session_id, on_comment):
     client = TikTokLiveClient(unique_id=f"@{username}")
 
     async def handle_comment(event: CommentEvent):
-        if event.user is None:
+        user = event.user
+        if user is None:
             return
 
-        # Get the commenter's profile picture URL
         avatar_url = None
-        avatar = getattr(event.user, "avatar_thumb", None)
 
-        if avatar:
+        try:
+            avatar = user.avatar_thumb
             urls = getattr(avatar, "url_list", None)
+
             if urls:
                 avatar_url = urls[0]
+        except (AttributeError, IndexError, TypeError):
+            pass
 
         await on_comment({
-            "username": event.user.unique_id,
-            "nickname": event.user.nickname,
+            "username": user.unique_id,
+            "nickname": user.nickname,
             "comment": event.comment,
             "avatar_url": avatar_url
         })
@@ -74,7 +77,6 @@ async def stop_tiktok_live(session_id):
         return {"status": "not_connected"}
 
     await connection["client"].disconnect()
-
     active_clients.pop(session_id, None)
 
     return {"status": "disconnected"}
