@@ -18,6 +18,7 @@ async def start_tiktok_live(username, session_id, on_comment):
 
     async def handle_comment(event: CommentEvent):
         user = event.user
+
         if user is None:
             return
 
@@ -25,12 +26,21 @@ async def start_tiktok_live(username, session_id, on_comment):
 
         try:
             avatar = user.avatar_thumb
-            urls = getattr(avatar, "url_list", None)
 
-            if urls:
-                avatar_url = urls[0]
-        except (AttributeError, IndexError, TypeError):
-            pass
+            if avatar:
+                urls = getattr(avatar, "url_list", None)
+
+                if urls and len(urls) > 0:
+                    avatar_url = urls[0]
+
+        except Exception as error:
+            print(f"[VARA AVATAR ERROR] {error}")
+
+        print(
+            f"[VARA AVATAR DEBUG] "
+            f"user={user.unique_id}, "
+            f"avatar_url={avatar_url}"
+        )
 
         await on_comment({
             "username": user.unique_id,
@@ -77,6 +87,7 @@ async def stop_tiktok_live(session_id):
         return {"status": "not_connected"}
 
     await connection["client"].disconnect()
+
     active_clients.pop(session_id, None)
 
     return {"status": "disconnected"}
