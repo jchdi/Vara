@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Sora:wght@600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Cairo:wght@700;900&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; background-color: #050505; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-highest": "#353437", "surface-container-low": "#1c1b1e", "error": "#ffb4ab", "secondary": "#ffb95f", "on-background": "#e5e1e4", "surface-container-lowest": "#0e0e10", "surface-bright": "#39393b", "tertiary-container": "#c48243", "on-secondary-fixed-variant": "#653e00", "secondary-container": "#ee9800", "outline-variant": "#5d3f3f", "surface-variant": "#353437", "secondary-fixed": "#ffddb8", "primary-fixed": "#ffdad9", "on-error-container": "#ffdad6", "on-primary": "#680015", "on-tertiary-container": "#422200", "inverse-on-surface": "#313032", "primary-container": "#ff5261", "tertiary-fixed": "#ffdcc1", "surface-dim": "#131315", "on-error": "#690005", "on-tertiary": "#4b2700", "surface-container": "#201f22", "inverse-surface": "#e5e1e4", "surface": "#131315", "on-secondary": "#472a00", "on-secondary-fixed": "#2a1700", "on-secondary-container": "#5b3800", "on-surface-variant": "#e6bcbc", "on-tertiary-fixed-variant": "#6c3a00", "on-primary-fixed-variant": "#920022", "error-container": "#93000a", "tertiary": "#ffb877", "on-surface": "#e5e1e4", "surface-container-high": "#2a2a2c", "on-tertiary-fixed": "#2e1600", "on-primary-fixed": "#400009", "primary-fixed-dim": "#ffb3b3", "secondary-fixed-dim": "#ffb95f", "surface-tint": "#ffb3b3", "on-primary-container": "#5b0011", "tertiary-fixed-dim": "#ffb877", "primary": "#ffb3b3", "inverse-primary": "#bf002f", "background": "#131315", "outline": "#ad8887" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin": "1rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "margin-desktop": "2.5rem", "space-md": "1rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "gutter-desktop": "1.5rem", "gutter": "1rem", "margin-tablet": "1.5rem" }, "fontFamily": { "headline-xl": [ "Sora" ], "body-lg": [ "Inter" ], "label-data": [ "Space Grotesk" ], "label-micro": [ "Space Grotesk" ], "label-broadcast": [ "Space Grotesk" ], "display-hero-mobile": [ "Sora" ], "headline-sm": [ "Sora" ], "headline-xl-mobile": [ "Sora" ], "body-sm": [ "Inter" ], "display-hero": [ "Sora" ], "headline-md": [ "Sora" ], "headline-lg": [ "Sora" ], "body-md": [ "Inter" ] }, "fontSize": { "headline-xl": [ "2.5rem", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-lg": [ "1.125rem", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" } ], "label-data": [ "0.75rem", { "lineHeight": "1", "letterSpacing": "0.08em", "fontWeight": "600" } ], "label-micro": [ "0.625rem", { "lineHeight": "1", "letterSpacing": "0.12em", "fontWeight": "700" } ], "label-broadcast": [ "0.875rem", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700" } ], "display-hero-mobile": [ "2.5rem", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" } ], "headline-sm": [ "1.25rem", { "lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "600" } ], "headline-xl-mobile": [ "1.75rem", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "body-sm": [ "0.8125rem", { "lineHeight": "1.45", "letterSpacing": "0.01em", "fontWeight": "400" } ], "display-hero": [ "4rem", { "lineHeight": "1.05", "letterSpacing": "-0.03em", "fontWeight": "800" } ], "headline-md": [ "1.5rem", { "lineHeight": "1.25", "letterSpacing": "0", "fontWeight": "600" } ], "headline-lg": [ "2rem", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "body-md": [ "0.9375rem", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" } ] } } } };</script></head><style>
+  #arena-revolving-stage{max-width:min(78vw,640px);max-height:min(78vw,640px);}
+  @media(max-width:640px){#arena-revolving-stage{width:min(88vw,420px)!important;height:min(88vw,420px)!important}.xl\:col-span-4{height:auto!important;min-height:560px}.xl\:col-span-8{min-height:0!important}}
+  #players-orbit,#chairs-mount{border-radius:50%;overflow:visible}
+  .player-avatar-fallback{background:#382014;color:#f4d3b0}
+  button:disabled{cursor:not-allowed}
+</style>
+<body class="bg-surface-container-lowest text-on-surface font-body-md text-body-md antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.8)]"><div class="h-16 w-full px-space-md lg:px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="VARA Gaming Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrB-j4E5RdPUOWvah-iBfg0MZ2lhqiI6FKK26grEfmBYlWzI4OKpoF_iiQPfmTYnjj0OuJtIAwTKA08xEJGqo8D7bGvmX2JX1JTWKTFyro--3aUUQ9IU31WvLz0Ia8XX_T5bHzJBr1P2AqAs88xmQVSrsq6Ij8MRdO8kEO0eb9A0K51mCps8EQMwHSBC2hXoQjl24PKBVkdr_fwuSuFBo9JIieQtjM36kgdysvYBv5nr"/><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface uppercase hidden sm:inline-block">VARA</span></div><div class="hidden md:flex items-center gap-space-xs bg-surface-container-low px-space-sm py-space-xs rounded"><span class="font-label-broadcast text-label-broadcast text-secondary uppercase">MUSICAL CHAIRS ARENA</span><span class="text-outline-variant font-label-micro text-label-micro">•</span><span class="font-label-data text-label-data text-on-surface-variant uppercase">SEASON 4</span></div></div><nav class="hidden xl:flex items-center gap-space-md" data-active-classes="bg-surface-container text-on-surface font-label-broadcast rounded"><a aria-current="page" class="px-space-sm py-space-xs transition-colors uppercase bg-surface-container text-on-surface font-label-broadcast rounded" data-path="live-arena" href="#">Live Arena</a><a class="font-label-broadcast text-label-broadcast px-space-sm py-space-xs text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="arena-schedule" href="#">Broadcast Schedule</a><a class="font-label-broadcast text-label-broadcast px-space-sm py-space-xs text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="leaderboard" href="#">Leaderboard</a><a class="font-label-broadcast text-label-broadcast px-space-sm py-space-xs text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="rules" href="#">Arena Rules</a></nav><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-error-container/40 px-space-sm py-space-xs rounded shadow-[0_0_12px_rgba(255,46,77,0.3)]"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-broadcast text-label-broadcast text-primary uppercase">LOCAL PREVIEW</span></div><div class="hidden lg:flex items-center gap-space-xs bg-surface-container-low px-space-sm py-space-xs rounded"><span class="font-label-micro text-label-micro text-on-surface-variant uppercase">TIKTOK NOT CONNECTED</span></div><div class="hidden lg:flex items-center gap-space-xs bg-surface-container-low px-space-sm py-space-xs rounded"><span class="font-label-micro text-label-micro text-on-surface-variant uppercase">TEST MODE</span></div><div class="hidden sm:flex items-center gap-space-xs bg-surface-container-high px-space-sm py-space-xs rounded"><span class="font-label-micro text-label-micro text-on-surface uppercase">DEMO PLAYERS</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface-container-lowest min-h-screen"><div class="flex flex-col w-full text-on-surface select-none overflow-x-hidden font-body-md">
+<!-- HUD STRIP OVERLAY -->
+<section class="w-full bg-surface-container-lowest/80 backdrop-blur-md px-space-md lg:px-margin-desktop py-space-sm flex flex-wrap items-center justify-between gap-space-md shadow-2xl">
+<div class="flex items-center gap-space-lg flex-wrap">
+<div class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-space-xs rounded">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-ping"></span>
+<span class="font-label-broadcast text-label-broadcast text-primary uppercase tracking-widest">LIVE BROADCAST</span>
+<span class="text-outline-variant font-label-micro text-label-micro">•</span>
+<span class="font-label-broadcast text-label-broadcast text-secondary uppercase" id="hud-round-pill">ROUND 1 OF 4</span>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">group</span>
+<span class="font-label-data text-label-data text-on-surface-variant uppercase">PLAYERS:</span>
+<span class="font-label-data text-label-data text-on-surface font-bold" id="hud-players-count">10 ALIVE</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">chair</span>
+<span class="font-label-data text-label-data text-on-surface-variant uppercase">CHAIRS:</span>
+<span class="font-label-data text-label-data text-secondary font-bold" id="hud-chairs-count">5 ACTIVE</span>
+</div>
+</div>
+</div>
+<!-- AUDIO ENGINE STATUS INDICATOR -->
+<div class="flex items-center gap-space-lg">
+<div class="flex items-center gap-space-sm bg-surface-container px-space-md py-space-xs rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" id="audio-state-icon">music_off</span>
+<div class="flex items-center gap-1 h-4 w-16" id="visualizer-bars">
+<span class="v-bar w-1 bg-surface-variant h-1 rounded-full transition-all duration-150"></span>
+<span class="v-bar w-1 bg-surface-variant h-1.5 rounded-full transition-all duration-150"></span>
+<span class="v-bar w-1 bg-surface-variant h-1 rounded-full transition-all duration-150"></span>
+<span class="v-bar w-1 bg-surface-variant h-2 rounded-full transition-all duration-150"></span>
+<span class="v-bar w-1 bg-surface-variant h-1 rounded-full transition-all duration-150"></span>
+<span class="v-bar w-1 bg-surface-variant h-1.5 rounded-full transition-all duration-150"></span>
+<span class="v-bar w-1 bg-surface-variant h-1 rounded-full transition-all duration-150"></span>
+</div>
+<span class="font-label-broadcast text-label-broadcast text-on-surface-variant uppercase tracking-wider" id="audio-state-text">AWAITING START</span>
+</div>
+<div class="hidden md:flex items-center gap-space-xs bg-surface-container-high px-space-sm py-space-xs rounded">
+<span class="material-symbols-outlined text-tertiary text-[16px]">podium</span>
+<span class="font-label-micro text-label-micro text-on-surface uppercase">GRAND PRIZE: 25,000 $VARA</span>
+</div>
+</div>
+</section>
+<!-- MAIN BROADCAST BATTLEGROUND -->
+<main class="w-full grid grid-cols-1 xl:grid-cols-12 gap-space-md p-space-md lg:p-space-lg items-start">
+<!-- LEFT & CENTER: ARENA STAGE (8 COLS ON DESKTOP) -->
+<div class="xl:col-span-8 flex flex-col items-center justify-between bg-surface-container-lowest rounded-xl p-space-md lg:p-space-lg relative overflow-hidden shadow-2xl min-h-[680px]">
+
+<!-- BROADCAST ROUND BANNER OVERLAY -->
+<div class="w-full flex items-center justify-between z-10 px-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-micro text-label-micro uppercase tracking-widest text-primary font-bold">VARA BROADCAST TITAN ARENA</span>
+<span class="px-space-xs py-[2px] bg-primary-container text-on-primary-container font-label-micro text-label-micro rounded uppercase font-bold">SEASON 4 FINALS</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase tracking-tight mt-1 flex items-center gap-space-sm" id="stage-status-title">
+<span>CHAIRS LOCKED</span>
+<span class="text-secondary text-sm font-label-data uppercase tracking-widest bg-secondary/10 px-2 py-1 rounded">ROUND 1</span>
+</h2>
+</div>
+<!-- COUNTDOWN TIMER DISPLAY -->
+<div class="opacity-0 transition-opacity duration-300 flex items-center gap-space-sm bg-error-container/60 px-space-md py-space-xs rounded-xl shadow-[0_0_25px_rgba(255,46,77,0.4)]" id="drop-timer-wrapper">
+<span class="material-symbols-outlined text-primary text-[28px] animate-spin">alarm</span>
+<div class="flex flex-col">
+<span class="font-label-micro text-label-micro uppercase tracking-widest text-primary-fixed">SEAT LOCKOUT</span>
+<span class="font-label-broadcast text-xl text-on-surface font-black tracking-widest" id="countdown-val">10.00s</span>
+</div>
+</div>
+</div>
+<!-- 100% PERFECT CIRCULAR WHEEL STAGE ARENA WRAPPER (NO SQUARE FRAME) -->
+<div class="relative w-full flex items-center justify-center my-space-lg select-none py-4">
+<!-- SYNCHRONIZED ROTATING CIRCULAR WHEEL ROOT (aspect-ratio 1:1, border-radius 50%) -->
+<div class="relative w-[340px] h-[340px] sm:w-[480px] sm:h-[480px] md:w-[600px] md:h-[600px] lg:w-[640px] lg:h-[640px] rounded-full aspect-square flex items-center justify-center will-change-transform shadow-[0_0_80px_rgba(0,0,0,0.95)]" id="arena-revolving-stage" style="border-radius: 50%;">
+<!-- MINIMAL CLEAN CIRCULAR WOODEN WHEEL (SMOOTH RADIAL GRADIENT: LIGHT BROWN CENTER TO DARK BROWN OUTER EDGE, NO GRIDS, NO SEGMENTS) -->
+<div class="absolute inset-0 rounded-full border-[10px] sm:border-[14px] border-[#241208]" style="border-radius:50%; background:radial-gradient(circle at 50% 45%, #a66a3b 0%, #89512b 47%, #563019 76%, #241208 100%); box-shadow:inset 0 0 22px rgba(20,8,2,.35), 0 18px 42px rgba(0,0,0,.7);">
+</div>
+<!-- INNER CONCENTRIC CHAIRS RING LAYER (Rotates seamlessly with wheel) -->
+<div class="absolute inset-0 pointer-events-none" id="chairs-mount"></div>
+<!-- OUTER CIRCULAR RING LAYER: PLAYERS ARRANGED ALONG PERIMETER (Rotates seamlessly with wheel) -->
+<div class="absolute inset-0 pointer-events-auto" id="players-orbit"></div>
+</div>
+</div>
+<!-- BOTTOM CONTROL BAR / ACTION ENGINE DOCK -->
+<div class="w-full flex flex-col sm:flex-row items-center justify-between gap-space-md z-10 pt-space-md bg-surface-container-low/60 backdrop-blur-md p-space-md rounded-xl">
+<div class="flex items-center gap-space-md w-full sm:w-auto">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-[26px]">stream</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-micro text-label-micro uppercase tracking-widest text-on-surface-variant font-semibold">STAGE MASTER CONTROLLER</span>
+<span class="font-label-broadcast text-label-broadcast text-on-surface" id="controller-hint">PRESS 'START' TO COMMENCE MUSIC &amp; ROTATION</span>
+</div>
+</div>
+<!-- HIGH-ENERGY PULSATING START BUTTON -->
+<div class="flex items-center gap-space-sm w-full sm:w-auto justify-end">
+<button class="group relative w-full sm:w-auto px-space-xl bg-gradient-to-r from-primary-container via-inverse-primary to-error-container hover:from-inverse-primary hover:to-primary-container active:scale-95 transition-all duration-150 py-3 rounded-lg shadow-[0_0_30px_rgba(255,46,77,0.6)] flex items-center justify-center gap-space-sm text-on-primary font-label-broadcast text-label-broadcast font-black tracking-widest uppercase cursor-pointer" id="btn-start-round">
+<span class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">play_arrow</span>
+<span id="btn-start-label">▶ START ROUND 1</span>
+<span class="absolute -top-1 -right-1 w-3 h-3 bg-secondary rounded-full animate-ping"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- RIGHT: INTERACTIVE BROADCAST LIVE CHAT & SEAT LEDGER (4 COLS ON DESKTOP) -->
+<div class="xl:col-span-4 flex flex-col gap-space-md h-[780px]">
+<!-- TOP: ACTIVE SEAT CLAIM MONITOR -->
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-xl flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">event_seat</span>
+<span class="font-label-broadcast text-label-broadcast text-on-surface uppercase tracking-wider">SEAT MATRIX OVERVIEW</span>
+</div>
+<span class="px-space-xs py-[2px] bg-surface-container text-on-surface-variant font-label-micro text-label-micro rounded uppercase font-bold tracking-widest" id="badge-lock-status">
+            AWAITING DROP
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          When the audio halts, seats turn into numbered pads. Type an available number in the live chat to claim it!
+        </p>
+<!-- SEAT CLAIM SLOTS LIST -->
+<div class="grid grid-cols-5 gap-2 mt-2" id="seat-claim-chips">
+<!-- Populated by JavaScript -->
+</div>
+</div>
+<!-- MAIN LIVE BROADCAST CHAT PANEL -->
+<div class="flex-1 bg-surface-container-low rounded-xl p-space-md shadow-xl flex flex-col justify-between overflow-hidden">
+<!-- CHAT HEADER -->
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span class="font-label-broadcast text-label-broadcast text-on-surface uppercase tracking-wider">ARENA LIVE STREAM CHAT</span>
+</div>
+<span class="font-label-micro text-label-micro text-on-surface-variant uppercase">MODERATED BOT ON</span>
+</div>
+<!-- CHAT MESSAGE LOG CONTAINER -->
+<div class="flex-1 overflow-y-auto space-y-2.5 py-space-sm pr-1" id="chat-messages-container">
+<!-- Initial broadcast welcome messages -->
+<div class="bg-surface-container px-3 py-2 rounded text-body-sm">
+<span class="text-secondary font-label-data text-label-data uppercase font-bold mr-1.5">VARA:</span>
+<span class="text-on-surface-variant">هذه معاينة محلية. ربط تعليقات TikTok يحتاج توصيل WebSocket الخاص بالموقع.</span>
+</div>
+</div>
+<!-- QUICK NUMBER CLAIM BUTTONS -->
+<div class="pt-space-xs pb-space-xs flex items-center gap-1.5 overflow-x-auto" id="quick-action-strip">
+<span class="font-label-micro text-label-micro text-on-surface-variant uppercase shrink-0">QUICK:</span>
+<div class="flex items-center gap-1.5" id="quick-number-buttons">
+<!-- Rendered when numbers drop -->
+<span class="font-label-micro text-label-micro text-on-surface-variant italic">Waiting for music to stop...</span>
+</div>
+</div>
+<!-- CHAT INPUT COMPONENT -->
+<div class="pt-space-xs">
+<form class="flex items-center gap-2" id="chat-form">
+<div class="relative flex-1">
+<input autocomplete="off" inputmode="numeric" maxlength="2" class="w-full bg-surface-container-lowest text-on-surface font-label-data text-label-data px-3 py-2.5 rounded focus:outline-none focus:ring-1 focus:ring-primary-container placeholder:text-outline-variant uppercase" id="chat-input" placeholder="Type seat number (01–99)..." type="text"/>
+</div>
+<button class="bg-secondary-container hover:bg-secondary text-on-secondary px-4 py-2.5 rounded font-label-broadcast text-label-broadcast uppercase font-bold active:scale-95 transition-all" type="submit">
+              SEND
+            </button>
+</form>
+<div class="flex items-center justify-between text-outline-variant font-label-micro text-label-micro mt-1 px-1">
+<span>LOCAL TEST INPUT</span>
+<span>ENTER KEY SENDS</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- ELIMINATION MODAL DIALOG -->
+<div class="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl flex items-center justify-center p-space-md opacity-0 pointer-events-none transition-opacity duration-300" id="elimination-modal">
+<div class="relative max-w-2xl w-full bg-surface-container-lowest rounded-2xl p-space-lg shadow-[0_0_60px_rgba(255,46,77,0.35)] flex flex-col items-center text-center">
+<!-- DANGER ICON -->
+<div class="w-16 h-16 rounded-full bg-error-container/30 flex items-center justify-center text-error mb-space-sm shadow-[0_0_20px_rgba(255,77,77,0.4)]">
+<span class="material-symbols-outlined text-[36px]">sentiment_very_dissatisfied</span>
+</div>
+<span class="font-label-micro text-label-micro text-error uppercase tracking-widest font-black">ROUND TERMINATED</span>
+<h3 class="font-headline-xl text-headline-xl text-on-surface uppercase tracking-tight mt-1">ELIMINATION SUMMARY</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mt-1" id="modal-elimination-sub">
+        The music stopped. Players who did not claim a numbered seat are eliminated.
+      </p>
+<!-- ELIMINATED PLAYERS ROSTER -->
+<div class="w-full grid grid-cols-2 sm:grid-cols-5 gap-space-sm my-space-lg" id="eliminated-cards-grid">
+<!-- Rendered dynamically -->
+</div>
+<!-- NEXT ROUND CTA -->
+<button class="w-full sm:w-auto px-space-xl py-3 bg-gradient-to-r from-primary-container to-inverse-primary hover:brightness-110 active:scale-95 text-on-primary font-label-broadcast text-label-broadcast uppercase tracking-widest font-black rounded-lg shadow-[0_0_30px_rgba(255,46,77,0.7)] flex items-center justify-center gap-space-sm" id="btn-next-round">
+<span>CONTINUE TO NEXT ROUND</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- GRAND FINAL CHAMPION VICTORY SCREEN -->
+<div class="fixed inset-0 z-50 bg-black/90 backdrop-blur-2xl flex items-center justify-center p-space-md opacity-0 pointer-events-none transition-opacity duration-500 overflow-hidden" id="victory-modal">
+<!-- CELEBRATORY RADIAL FLARES -->
+<div class="absolute inset-0 bg-gradient-to-b from-secondary/10 via-primary/5 to-surface-container-lowest pointer-events-none"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] bg-secondary/15 rounded-full blur-[140px] pointer-events-none"></div>
+<div class="relative max-w-xl w-full bg-surface-container-lowest/90 rounded-2xl p-space-xl shadow-[0_0_80px_rgba(245,158,11,0.5)] flex flex-col items-center text-center z-10">
+<!-- GOLD TROPHY CROWN -->
+<div class="relative mb-2">
+<span class="material-symbols-outlined text-secondary text-[64px] animate-bounce">emoji_events</span>
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-10 bg-secondary/30 rounded-full blur-md"></div>
+</div>
+<!-- ARABIC CELEBRATORY CALLIGRAPHIC HEADING -->
+<h1 class="text-7xl font-black text-secondary tracking-widest drop-shadow-[0_0_25px_rgba(245,158,11,0.8)] mb-2 select-none" style="font-family: 'Cairo', sans-serif;">
+        مبروك!
+      </h1>
+<span class="font-label-broadcast text-label-broadcast text-primary uppercase tracking-widest font-bold">VARA MUSICAL CHAIRS CHAMPION</span>
+<!-- WINNER AVATAR DISPLAY -->
+<div class="my-space-lg flex flex-col items-center">
+<div class="relative w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-secondary via-primary-container to-secondary-fixed shadow-[0_0_40px_rgba(245,158,11,0.6)]">
+<img class="w-full h-full object-cover rounded-full" data-alt="Cyberpunk esports tournament champion player avatar, dynamic neon rim lighting, confident expression, futuristic visor and tactical collar" id="winner-avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsmzBKGmaUVDITap6z_i2xWKrk8p1oHq2JKpmSVhBe9GRfJxEubub2MmvPhH-jUNW_XebyDLrxTq80FesP05A6zEYsSkp6TTWgMeSQAn4DVPSxtfAbXxdkqydpEIyLd6lsetApjLYo7_CIp9c-qEWt9y_kp-B0qTT1TZsBVITZ09m4vc9AOscpISQ8JVY_JOo-Fkqx6aAtE8Dfs4xym4MKFNetoeSqJyF4wRjHtg0"/>
+<div class="absolute -bottom-2 bg-secondary text-on-secondary font-label-micro text-label-micro px-2 py-0.5 rounded-full font-black uppercase tracking-wider">
+            WINNER
+          </div>
+</div>
+<h4 class="font-headline-xl text-headline-xl text-on-surface uppercase tracking-tight mt-3" id="winner-name">ApexPredator</h4>
+<span class="font-label-data text-label-data text-secondary uppercase font-semibold">SURVIVED 4 ROUNDS • TOOK 25,000 $VARA POOL</span>
+</div>
+<!-- PLAY AGAIN RESET ACTION -->
+<button class="w-full px-space-xl py-3.5 bg-gradient-to-r from-secondary-container via-secondary to-tertiary hover:brightness-110 active:scale-95 text-on-secondary font-label-broadcast text-label-broadcast uppercase tracking-widest font-black rounded-lg shadow-[0_0_30px_rgba(245,158,11,0.7)] flex items-center justify-center gap-space-sm" id="btn-play-again">
+<span class="material-symbols-outlined">restart_alt</span>
+<span>START NEW TOURNAMENT (RESET)</span>
+</button>
+</div>
+</div>
+<!-- AUDIO TONE SYNTHESIZER AND FULL GAME ENGINE SCRIPT -->
+<script>
+    (function () {
+      // 1. SOUND GENERATOR VIA WEB AUDIO API
+      let audioCtx = null;
+      let musicInterval = null;
+
+      function initAudio() {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+      }
+
+      function playTone(freq, type = 'sine', duration = 0.12, gainVal = 0.08) {
+        if (!audioCtx) return;
+        try {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+          gain.gain.setValueAtTime(gainVal, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + duration);
+        } catch (e) { }
+      }
+
+      function playMusicBeat() {
+        const notes = [220, 261.63, 293.66, 329.63, 392, 440, 523.25];
+        const note = notes[Math.floor(Math.random() * notes.length)];
+        playTone(note, 'sawtooth', 0.18, 0.04);
+        playTone(110, 'triangle', 0.22, 0.08); // rhythmic bass thump
+      }
+
+      function playStopScreech() {
+        playTone(180, 'square', 0.35, 0.12);
+      }
+
+      function playClaimChime() {
+        playTone(880, 'sine', 0.15, 0.1);
+        setTimeout(() => playTone(1320, 'sine', 0.2, 0.1), 80);
+      }
+
+      function playVictoryFanfare() {
+        const fan = [523.25, 659.25, 783.99, 1046.50];
+        fan.forEach((f, idx) => {
+          setTimeout(() => playTone(f, 'sine', 0.4, 0.15), idx * 160);
+        });
+      }
+
+      // 2. PLAYERS DATASTORE (10 INITIAL PLAYERS)
+      const ALL_PLAYERS = [
+        { id: 1, name: "ApexPredator", isUser: true, ping: "12ms", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBsmzBKGmaUVDITap6z_i2xWKrk8p1oHq2JKpmSVhBe9GRfJxEubub2MmvPhH-jUNW_XebyDLrxTq80FesP05A6zEYsSkp6TTWgMeSQAn4DVPSxtfAbXxdkqydpEIyLd6lsetApjLYo7_CIp9c-qEWt9y_kp-B0qTT1TZsBVITZ09m4vc9AOscpISQ8JVY_JOo-Fkqx6aAtE8Dfs4xym4MKFNetoeSqJyF4wRjHtg0" },
+        { id: 2, name: "Kira_V", isUser: false, ping: "18ms", avatar: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=150&q=80" },
+        { id: 3, name: "CyberSam", isUser: false, ping: "24ms", avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" },
+        { id: 4, name: "NeonValkyrie", isUser: false, ping: "15ms", avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" },
+        { id: 5, name: "ZeroCool", isUser: false, ping: "31ms", avatar: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=150&q=80" },
+        { id: 6, name: "Gh0stRider", isUser: false, ping: "29ms", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" },
+        { id: 7, name: "PixelViper", isUser: false, ping: "19ms", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" },
+        { id: 8, name: "ShadowNova", isUser: false, ping: "22ms", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" },
+        { id: 9, name: "Solaris_99", isUser: false, ping: "16ms", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" },
+        { id: 10, name: "VortexBlade", isUser: false, ping: "27ms", avatar: "https://images.unsplash.com/photo-1628157582853-a796fa650a6a?auto=format&fit=crop&w=150&q=80" }
+      ];
+
+      // 3. TOURNAMENT STATE
+      let currentRound = 1;
+      let activePlayers = [...ALL_PLAYERS];
+      let chairCount = 5;
+      let chairNumbers = [];
+      let claimedChairs = {};
+      let isSpinning = false;
+      let isClaiming = false;
+      let currentAngle = 0;
+      let spinAnimFrame = null;
+      let countdownTimer = null;
+      let autoClaimTimeouts = [];
+
+      // DOM ELEMENTS
+      const revolvingStage = document.getElementById('arena-revolving-stage');
+      const chairsMount = document.getElementById('chairs-mount');
+      const playersOrbit = document.getElementById('players-orbit');
+      const btnStart = document.getElementById('btn-start-round');
+      const btnStartLabel = document.getElementById('btn-start-label');
+      const visualizerBars = document.querySelectorAll('.v-bar');
+      const audioIcon = document.getElementById('audio-state-icon');
+      const audioText = document.getElementById('audio-state-text');
+      const stageStatusTitle = document.getElementById('stage-status-title');
+      const controllerHint = document.getElementById('controller-hint');
+      const dropTimerWrapper = document.getElementById('drop-timer-wrapper');
+      const countdownVal = document.getElementById('countdown-val');
+      const hudRoundPill = document.getElementById('hud-round-pill');
+      const hudPlayersCount = document.getElementById('hud-players-count');
+      const hudChairsCount = document.getElementById('hud-chairs-count');
+      const seatChipsContainer = document.getElementById('seat-claim-chips');
+      const chatContainer = document.getElementById('chat-messages-container');
+      const chatForm = document.getElementById('chat-form');
+      const chatInput = document.getElementById('chat-input');
+      const quickNumberButtons = document.getElementById('quick-number-buttons');
+      const eliminationModal = document.getElementById('elimination-modal');
+      const eliminatedCardsGrid = document.getElementById('eliminated-cards-grid');
+      const btnNextRound = document.getElementById('btn-next-round');
+      const victoryModal = document.getElementById('victory-modal');
+      const btnPlayAgain = document.getElementById('btn-play-again');
+      const winnerName = document.getElementById('winner-name');
+      const badgeLockStatus = document.getElementById('badge-lock-status');
+
+      function calcChairCount(playerNum) {
+        return Math.max(1, Math.ceil(playerNum / 2));
+      }
+
+      function escapeHTML(value) {
+        return String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+      }
+
+      function appendChatMessage(sender, text, isSpecial = false, isUser = false) {
+        const row = document.createElement('div');
+        row.className = `bg-surface-container px-3 py-2 rounded text-body-sm transition-all ${isSpecial ? 'shadow-[0_0_15px_rgba(245,158,11,0.2)] bg-surface-container-high' : ''}`;
+        
+        const senderColor = isUser ? 'text-primary-container' : (isSpecial ? 'text-secondary font-black' : 'text-primary');
+        row.innerHTML = `<span class="${senderColor} font-label-data text-label-data uppercase font-bold mr-1.5">${escapeHTML(sender)}:</span><span class="${isSpecial ? 'text-on-surface font-semibold' : 'text-on-surface-variant'}">${escapeHTML(text)}</span>`;
+        chatContainer.appendChild(row);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
+
+      // RENDER PLAYERS AND CHAIRS IN CONCENTRIC CIRCULAR PATTERNS
+      function renderBoard() {
+        chairsMount.innerHTML = '';
+        playersOrbit.innerHTML = '';
+        seatChipsContainer.innerHTML = '';
+
+        hudPlayersCount.textContent = `${activePlayers.length} ALIVE`;
+        hudChairsCount.textContent = `${chairCount} ACTIVE`;
+        hudRoundPill.textContent = `ROUND ${currentRound} OF 4`;
+
+        // Radii inside the clean minimal circular wheel:
+        // Center is (50%, 50%)
+        // Chairs at 28% radius (mid-inner circle)
+        // Players at 43% radius (along outer circumference of circular wheel)
+        const chairRadius = 28;
+        const playerRadius = 43;
+
+        // RENDER CHAIRS / NUMBER PADS IN CIRCLE
+        for (let i = 0; i < chairCount; i++) {
+          const angle = (360 / chairCount) * i - 90; // start top
+          const rad = (angle * Math.PI) / 180;
+          const left = 50 + chairRadius * Math.cos(rad);
+          const top = 50 + chairRadius * Math.sin(rad);
+
+          const chairEl = document.createElement('div');
+          chairEl.id = `chair-node-${i}`;
+          chairEl.className = 'absolute -translate-x-1/2 -translate-y-1/2 transition-all duration-300 pointer-events-auto z-20';
+          chairEl.style.left = `${left}%`;
+          chairEl.style.top = `${top}%`;
+
+          // Clean, simple chair design
+          chairEl.innerHTML = `
+            <div class="chair-physical flex flex-col items-center">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-b from-[#60391f] to-[#2c170c] shadow-[0_5px_12px_rgba(0,0,0,0.55)] flex items-center justify-center p-1 border border-[#9a6841] hover:scale-105 transition-transform">
+                <span class="material-symbols-outlined text-[#d7a879] text-2xl sm:text-3xl">chair</span>
+              </div>
+              <span class="bg-[#1f1008] text-secondary font-label-micro text-[8px] sm:text-[9px] px-1.5 py-0.5 rounded-full mt-1 uppercase font-bold tracking-widest shadow border border-secondary/30">
+                SEAT ${i + 1}
+              </span>
+            </div>
+            <div class="chair-pad hidden flex-col items-center">
+              <div id="pad-bubble-${i}" class="w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-surface-container-highest flex items-center justify-center font-label-broadcast text-lg sm:text-xl font-black text-on-surface shadow-[0_0_20px_rgba(255,46,77,0.5)] cursor-pointer active:scale-90 transition-transform">
+                --
+              </div>
+              <span id="pad-owner-${i}" class="font-label-micro text-[8px] text-on-surface-variant uppercase mt-1 truncate max-w-[70px]">
+                EMPTY
+              </span>
+            </div>
+          `;
+          chairsMount.appendChild(chairEl);
+
+          // Seat Monitor Chips on Sidebar
+          const chip = document.createElement('div');
+          chip.id = `sidebar-seat-${i}`;
+          chip.className = 'bg-surface-container p-2 rounded text-center flex flex-col items-center justify-center';
+          chip.innerHTML = `
+            <span class="font-label-micro text-[10px] text-on-surface-variant">SEAT ${i + 1}</span>
+            <span id="sidebar-num-${i}" class="font-label-broadcast text-base text-secondary font-bold">#--</span>
+            <span id="sidebar-status-${i}" class="font-label-micro text-[8px] text-outline-variant uppercase">OPEN</span>
+          `;
+          seatChipsContainer.appendChild(chip);
+        }
+
+        // RENDER PLAYERS ALONG OUTER PERIMETER OF CIRCULAR WHEEL
+        for (let j = 0; j < activePlayers.length; j++) {
+          const p = activePlayers[j];
+          const angle = (360 / activePlayers.length) * j - 90;
+          const rad = (angle * Math.PI) / 180;
+          const left = 50 + playerRadius * Math.cos(rad);
+          const top = 50 + playerRadius * Math.sin(rad);
+
+          const playerEl = document.createElement('div');
+          playerEl.id = `player-card-${p.id}`;
+          playerEl.className = 'absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group transition-all duration-300 z-30 pointer-events-auto';
+          playerEl.style.left = `${left}%`;
+          playerEl.style.top = `${top}%`;
+
+          playerEl.innerHTML = `
+            <div class="relative w-10 h-10 sm:w-12 sm:h-12 md:w-13 md:h-13 rounded-full p-[2px] ${p.isUser ? 'bg-primary-container shadow-[0_0_20px_rgba(255,82,97,0.9)] ring-2 ring-primary' : 'bg-surface-variant shadow-md'} transition-transform group-hover:scale-110">
+              <img src="${p.avatar || 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23382014%22/%3E%3Ccircle cx=%2250%22 cy=%2238%22 r=%2218%22 fill=%22%23d7a879%22/%3E%3Cpath d=%22M15 100c3-25 17-36 35-36s32 11 35 36%22 fill=%22%23d7a879%22/%3E%3C/svg%3E'}" alt="${escapeHTML(p.name)} player avatar" class="w-full h-full object-cover rounded-full">
+              <span id="player-badge-${p.id}" class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full ${p.isUser ? 'bg-primary-container ring-1 ring-white' : 'bg-surface-container-high'} flex items-center justify-center text-[9px] text-on-surface font-bold">
+                ${p.isUser ? '★' : '•'}
+              </span>
+            </div>
+            <div class="mt-0.5 flex flex-col items-center bg-black/85 px-1.5 py-0.5 rounded shadow border border-white/10 backdrop-blur-sm">
+              <span class="font-label-micro text-[8px] sm:text-[9px] ${p.isUser ? 'text-primary font-black' : 'text-on-surface font-bold'} tracking-tight uppercase truncate max-w-[65px]">
+                ${p.name}
+              </span>
+              <span class="font-label-micro text-[7px] text-outline-variant leading-none">
+                ${p.ping}
+              </span>
+            </div>
+          `;
+          playersOrbit.appendChild(playerEl);
+        }
+      }
+
+      // START MUSIC & SYNCHRONIZED CIRCULAR ROTATION
+      function startRoundSequence() {
+        if (isSpinning || isClaiming) return;
+        initAudio();
+
+        isSpinning = true;
+        btnStart.disabled = true;
+        btnStart.classList.add('opacity-50', 'cursor-not-allowed');
+        btnStartLabel.textContent = 'MUSIC PLAYING 🎶';
+        stageStatusTitle.innerHTML = `<span>STAGE IN MOTION</span><span class="text-primary text-sm font-label-data uppercase tracking-widest bg-primary/10 px-2 py-1 rounded animate-pulse">MUSIC ON</span>`;
+        controllerHint.textContent = 'MUSIC RUNNING... WHEEL, CHAIRS, AND CONTESTANTS ARE ROTATING!';
+        badgeLockStatus.textContent = 'ROTATING';
+        badgeLockStatus.className = 'px-space-xs py-[2px] bg-primary-container text-on-primary-container font-label-micro text-label-micro rounded uppercase font-bold tracking-widest';
+
+        audioIcon.textContent = 'music_note';
+        audioIcon.className = 'material-symbols-outlined text-primary text-[20px] animate-bounce';
+        audioText.textContent = 'MUSIC PLAYING 🎶';
+        audioText.className = 'font-label-broadcast text-label-broadcast text-primary uppercase tracking-wider font-bold';
+
+        // Animate visualizer
+        musicInterval = setInterval(() => {
+          playMusicBeat();
+          visualizerBars.forEach(b => {
+            const h = Math.floor(Math.random() * 14) + 3;
+            b.style.height = `${h}px`;
+            b.className = 'v-bar w-1 bg-primary rounded-full transition-all duration-100';
+          });
+        }, 180);
+
+        // Rotation physics: Smooth synchronized circular rotation on the wheel root container
+        let speed = 1.6;
+        function spinLoop() {
+          if (!isSpinning) return;
+          currentAngle = (currentAngle + speed) % 360;
+          revolvingStage.style.transform = `rotate(${currentAngle}deg)`;
+          spinAnimFrame = requestAnimationFrame(spinLoop);
+        }
+        spinAnimFrame = requestAnimationFrame(spinLoop);
+
+        appendChatMessage('VARA BROADCAST', `Round ${currentRound} music activated! Keep your eyes on the circular wheel!`, true);
+
+        // Random halt time between 3 and 15 seconds
+        const haltDuration = Math.floor(Math.random() * 12000) + 3000;
+        setTimeout(() => {
+          stopMusicAndDropChairs();
+        }, haltDuration);
+      }
+
+      // HALT AND CHAIR NUMBER DROP
+      function stopMusicAndDropChairs() {
+        isSpinning = false;
+        cancelAnimationFrame(spinAnimFrame);
+        clearInterval(musicInterval);
+        playStopScreech();
+
+        // Reset visualizer
+        visualizerBars.forEach(b => {
+          b.style.height = '4px';
+          b.className = 'v-bar w-1 bg-surface-variant rounded-full transition-all duration-150';
+        });
+
+        audioIcon.textContent = 'volume_off';
+        audioIcon.className = 'material-symbols-outlined text-error text-[20px]';
+        audioText.textContent = 'MUSIC STOPPED!';
+        audioText.className = 'font-label-broadcast text-label-broadcast text-error uppercase tracking-wider font-bold';
+
+        stageStatusTitle.innerHTML = `<span>CHAIRS DROPPED!</span><span class="text-secondary text-sm font-label-data uppercase tracking-widest bg-secondary/15 px-2 py-1 rounded font-black">CLAIM NOW!</span>`;
+        controllerHint.textContent = 'CHAIRS DROPPED! TYPE YOUR NUMBER IN THE LIVE CHAT TO CLAIM A SEAT!';
+        badgeLockStatus.textContent = 'NUMBERS ACTIVE';
+        badgeLockStatus.className = 'px-space-xs py-[2px] bg-secondary-container text-on-secondary font-label-micro text-label-micro rounded uppercase font-bold tracking-widest';
+
+        // GENERATE DISTINCT RANDOM NUMBERS BETWEEN 01 AND 99
+        chairNumbers = [];
+        while (chairNumbers.length < chairCount) {
+          const num = Math.floor(Math.random() * 98) + 1;
+          const formatted = num < 10 ? `0${num}` : `${num}`;
+          if (!chairNumbers.includes(formatted)) {
+            chairNumbers.push(formatted);
+          }
+        }
+
+        claimedChairs = {};
+        isClaiming = true;
+
+        // REVEAL NUMBERED PADS AT EXACT COORDINATES
+        quickNumberButtons.innerHTML = '';
+        for (let i = 0; i < chairCount; i++) {
+          const chairEl = document.getElementById(`chair-node-${i}`);
+          if (chairEl) {
+            chairEl.querySelector('.chair-physical').classList.add('hidden');
+            const pad = chairEl.querySelector('.chair-pad');
+            pad.classList.remove('hidden');
+            pad.classList.add('flex');
+
+            const bubble = document.getElementById(`pad-bubble-${i}`);
+            bubble.textContent = chairNumbers[i];
+            bubble.className = 'w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-secondary via-secondary-container to-[#653e00] flex items-center justify-center font-label-broadcast text-base sm:text-lg md:text-xl font-black text-on-secondary shadow-[0_0_25px_rgba(245,158,11,0.8)] cursor-pointer active:scale-95 transition-transform animate-pulse border-2 border-white/40';
+            
+            // Allow direct pad click
+            bubble.onclick = () => {
+              tryClaimSeat(activePlayers[0], chairNumbers[i]);
+            };
+          }
+
+          // Update sidebar monitor
+          const sidebarNum = document.getElementById(`sidebar-num-${i}`);
+          const sidebarStatus = document.getElementById(`sidebar-status-${i}`);
+          if (sidebarNum) sidebarNum.textContent = `#${chairNumbers[i]}`;
+          if (sidebarStatus) {
+            sidebarStatus.textContent = 'OPEN';
+            sidebarStatus.className = 'font-label-micro text-[8px] text-secondary uppercase font-bold';
+          }
+
+          // Quick action chips in chat
+          const qBtn = document.createElement('button');
+          qBtn.type = 'button';
+          qBtn.className = 'px-2.5 py-1 bg-surface-container-high hover:bg-secondary hover:text-on-secondary text-secondary font-label-broadcast text-xs rounded transition-all active:scale-95 font-black uppercase shadow';
+          qBtn.textContent = `#${chairNumbers[i]}`;
+          qBtn.onclick = () => {
+            tryClaimSeat(activePlayers[0], chairNumbers[i]);
+          };
+          quickNumberButtons.appendChild(qBtn);
+        }
+
+        // TRIGGER 10-SECOND LOCKOUT COUNTDOWN
+        dropTimerWrapper.classList.remove('opacity-0');
+        let timeLeft = 10.0;
+        countdownVal.textContent = '10.00s';
+        
+        countdownTimer = setInterval(() => {
+          timeLeft -= 0.05;
+          if (timeLeft <= 0) {
+            timeLeft = 0;
+            clearInterval(countdownTimer);
+            finalizeRound();
+          }
+          countdownVal.textContent = timeLeft.toFixed(2) + 's';
+        }, 50);
+
+        // No fake opponents claim seats automatically. In the live site, TikTok comments
+        // are passed through window.VARA_MUSICAL_CHAIRS.handleTikTokComment().
+      }
+
+      // ATTEMPT TO CLAIM SEAT
+      function tryClaimSeat(player, number) {
+        if (!isClaiming) return;
+        
+        const normalized = number.toString().trim().padStart(2, '0');
+        const chairIndex = chairNumbers.indexOf(normalized);
+        if (chairIndex === -1) {
+          if (player.isUser) {
+            appendChatMessage(player.name, `${normalized} (Invalid seat number!)`, false, true);
+          }
+          return;
+        }
+
+        const alreadyClaimed = Object.values(claimedChairs).some(p => p.id === player.id);
+        if (alreadyClaimed) {
+          if (player.isUser) {
+            appendChatMessage('SYSTEM', `${player.name}, you have already locked a chair!`, false);
+          }
+          return;
+        }
+
+        if (claimedChairs[normalized]) {
+          if (player.isUser) {
+            appendChatMessage(player.name, `${normalized} - OOPS! Seat already taken by ${claimedChairs[normalized].name}!`, false, true);
+          }
+          return;
+        }
+
+        // LOCK CLAIM!
+        claimedChairs[normalized] = player;
+        playClaimChime();
+
+        // Update Pad Graphic
+        const bubble = document.getElementById(`pad-bubble-${chairIndex}`);
+        const ownerLabel = document.getElementById(`pad-owner-${chairIndex}`);
+        if (bubble) {
+          bubble.classList.remove('from-secondary', 'via-secondary-container', 'animate-pulse');
+          bubble.classList.add('bg-gradient-to-r', 'from-[#065f46]', 'to-[#059669]', 'text-white', 'shadow-[0_0_25px_rgba(5,150,105,0.8)]');
+          bubble.innerHTML = `<span class="material-symbols-outlined text-xl sm:text-2xl">check_circle</span>`;
+        }
+        if (ownerLabel) {
+          ownerLabel.textContent = player.name;
+          ownerLabel.className = 'font-label-micro text-[8px] text-secondary font-black uppercase mt-1 truncate max-w-[80px] bg-black/80 px-1 rounded';
+        }
+
+        // Update Sidebar Monitor
+        const sidebarStatus = document.getElementById(`sidebar-status-${chairIndex}`);
+        if (sidebarStatus) {
+          sidebarStatus.textContent = player.name;
+          sidebarStatus.className = 'font-label-micro text-[8px] text-primary-container font-black uppercase truncate max-w-[80px]';
+        }
+
+        // Broadcast claim in chat
+        appendChatMessage(player.name, `${normalized} ⚡ SEAT LOCKED!`, true, player.isUser);
+
+        // Highlight Player Card in Circular Orbit
+        const playerCard = document.getElementById(`player-card-${player.id}`);
+        if (playerCard) {
+          playerCard.classList.add('scale-110');
+          const badge = document.getElementById(`player-badge-${player.id}`);
+          if (badge) {
+            badge.className = 'absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 ring-1 ring-white flex items-center justify-center text-[10px] text-white font-bold';
+            badge.textContent = '✓';
+          }
+        }
+
+        // Check if all chairs are claimed
+        if (Object.keys(claimedChairs).length >= chairCount) {
+          clearInterval(countdownTimer);
+          setTimeout(() => {
+            finalizeRound();
+          }, 800);
+        }
+      }
+
+      // CHAT INPUT HANDLER
+      chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const val = chatInput.value.trim();
+        if (!val) return;
+
+        const userPlayer = activePlayers.find(p => p.isUser);
+        if (isClaiming && userPlayer && /^\d+$/.test(val)) {
+          tryClaimSeat(userPlayer, val);
+        } else {
+          appendChatMessage(userPlayer ? userPlayer.name : 'ApexPredator', val, false, true);
+        }
+        chatInput.value = '';
+      });
+
+      // FINALIZE ROUND & SHOW ELIMINATION MODAL
+      function finalizeRound() {
+        if (!isClaiming) return;
+        isClaiming = false;
+        clearInterval(countdownTimer);
+        autoClaimTimeouts.forEach(t => clearTimeout(t));
+
+        dropTimerWrapper.classList.add('opacity-0');
+        badgeLockStatus.textContent = 'ROUND OVER';
+        badgeLockStatus.className = 'px-space-xs py-[2px] bg-surface-container text-on-surface-variant font-label-micro text-label-micro rounded uppercase font-bold tracking-widest';
+
+        const survivorIds = Object.values(claimedChairs).map(p => p.id);
+        const eliminated = activePlayers.filter(p => !survivorIds.includes(p.id));
+
+        appendChatMessage('VARA BROADCAST', `Lockout finished! ${eliminated.length} players failed to find a chair.`, true);
+
+        // Populate Elimination Modal
+        eliminatedCardsGrid.innerHTML = '';
+        eliminated.forEach(elPlayer => {
+          const card = document.createElement('div');
+          card.className = 'bg-surface-container-low p-space-sm rounded-xl flex flex-col items-center shadow-lg relative overflow-hidden group';
+          card.innerHTML = `
+            <div class="relative w-16 h-16 rounded-full p-[2px] bg-error/50 mb-2 grayscale">
+              <img src="${elPlayer.avatar}" data-alt="${elPlayer.name} eliminated" class="w-full h-full object-cover rounded-full opacity-60">
+              <span class="absolute inset-0 flex items-center justify-center text-error font-black text-2xl">✕</span>
+            </div>
+            <span class="font-label-broadcast text-label-broadcast text-on-surface uppercase font-bold truncate max-w-[100px] line-through">${elPlayer.name}</span>
+            <span class="font-label-micro text-label-micro text-error uppercase font-bold mt-0.5">ELIMINATED</span>
+          `;
+          eliminatedCardsGrid.appendChild(card);
+        });
+
+        // Show Modal
+        setTimeout(() => {
+          eliminationModal.classList.remove('opacity-0', 'pointer-events-none');
+        }, 1000);
+
+        // Prepare next round active players
+        activePlayers = activePlayers.filter(p => survivorIds.includes(p.id));
+      }
+
+      // NEXT ROUND TRANSITION
+      btnNextRound.addEventListener('click', () => {
+        eliminationModal.classList.add('opacity-0', 'pointer-events-none');
+
+        if (activePlayers.length <= 1) {
+          triggerGrandChampion();
+          return;
+        }
+
+        currentRound++;
+        chairCount = calcChairCount(activePlayers.length);
+
+        // Reset Board
+        revolvingStage.style.transform = `rotate(0deg)`;
+        currentAngle = 0;
+
+        btnStart.disabled = false;
+        btnStart.classList.remove('opacity-50', 'cursor-not-allowed');
+        btnStartLabel.textContent = `▶ START ROUND ${currentRound}`;
+        stageStatusTitle.innerHTML = `<span>ROUND ${currentRound} READY</span><span class="text-secondary text-sm font-label-data uppercase tracking-widest bg-secondary/10 px-2 py-1 rounded">${activePlayers.length} REMAINING</span>`;
+        controllerHint.textContent = `ROUND ${currentRound}: ${activePlayers.length} PLAYERS COMPETING FOR ${chairCount} CHAIRS!`;
+
+        renderBoard();
+        appendChatMessage('VARA SYSTEM', `Advancing to Round ${currentRound}. Chairs recalibrated to ${chairCount}!`, true);
+      });
+
+      // GRAND CHAMPION VICTORY CELEBRATION
+      function triggerGrandChampion() {
+        const winner = activePlayers[0];
+        if (!winner) {
+          winnerName.textContent = 'لا يوجد فائز';
+          document.getElementById('winner-avatar').style.visibility = 'hidden';
+          playStopScreech();
+          victoryModal.classList.remove('opacity-0', 'pointer-events-none');
+          return;
+        }
+        const winnerImg = document.getElementById('winner-avatar');
+        winnerImg.style.visibility = 'visible';
+        winnerImg.src = winner.avatar || 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23382014%22/%3E%3Ccircle cx=%2250%22 cy=%2238%22 r=%2218%22 fill=%22%23d7a879%22/%3E%3Cpath d=%22M15 100c3-25 17-36 35-36s32 11 35 36%22 fill=%22%23d7a879%22/%3E%3C/svg%3E';
+        winnerName.textContent = winner.name;
+        playVictoryFanfare();
+
+        appendChatMessage('CHAMPION', `🏆 ${winner.name} IS THE UNDISPUTED TITAN ARENA CHAMPION! 🏆`, true);
+        victoryModal.classList.remove('opacity-0', 'pointer-events-none');
+      }
+
+      // PLAY AGAIN (RESET)
+      btnPlayAgain.addEventListener('click', () => {
+        victoryModal.classList.add('opacity-0', 'pointer-events-none');
+        currentRound = 1;
+        activePlayers = [...ALL_PLAYERS];
+        chairCount = 5;
+        currentAngle = 0;
+        revolvingStage.style.transform = `rotate(0deg)`;
+
+        btnStart.disabled = false;
+        btnStart.classList.remove('opacity-50', 'cursor-not-allowed');
+        btnStartLabel.textContent = '▶ START ROUND 1';
+        stageStatusTitle.innerHTML = `<span>CHAIRS LOCKED</span><span class="text-secondary text-sm font-label-data uppercase tracking-widest bg-secondary/10 px-2 py-1 rounded">ROUND 1</span>`;
+        controllerHint.textContent = "PRESS 'START' TO COMMENCE MUSIC & ROTATION";
+
+        renderBoard();
+        appendChatMessage('VARA BROADCAST', 'Tournament reset! All 10 contestants return to the circular arena.', true);
+      });
+
+      btnStart.addEventListener('click', startRoundSequence);
+
+      // Public bridge for the VARA backend. Call setPlayers() with the real lobby roster,
+      // then pass each TikTok comment to handleTikTokComment().
+      function setPlayers(players) {
+        if (!Array.isArray(players) || players.length < 2 || isSpinning || isClaiming) return false;
+        const normalized = players.slice(0, 40).map((p, i) => ({
+          id: String(p.id ?? p.username ?? `live-${i}`).replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 48) || `live-${i}`,
+          username: String(p.username ?? p.unique_id ?? p.nickname ?? `player${i}`),
+          name: String(p.nickname ?? p.name ?? p.username ?? `Player ${i + 1}`),
+          isUser: false,
+          ping: '',
+          avatar: /^https?:\/\//i.test(String(p.avatar_url ?? p.avatar ?? '')) ? String(p.avatar_url ?? p.avatar) : ''
+        }));
+        ALL_PLAYERS.splice(0, ALL_PLAYERS.length, ...normalized);
+        activePlayers = [...ALL_PLAYERS];
+        currentRound = 1;
+        chairCount = calcChairCount(activePlayers.length);
+        claimedChairs = {}; chairNumbers = []; isClaiming = false; isSpinning = false;
+        currentAngle = 0; revolvingStage.style.transform = 'rotate(0deg)';
+        btnStart.disabled = false;
+        btnStart.classList.remove('opacity-50', 'cursor-not-allowed');
+        btnStartLabel.textContent = '▶ START ROUND 1';
+        renderBoard();
+        appendChatMessage('VARA SYSTEM', `${activePlayers.length} live contestants loaded.`, true);
+        return true;
+      }
+
+      function handleTikTokComment(data) {
+        if (!data || !isClaiming) return false;
+        const rawName = String(data.username ?? data.unique_id ?? data.user?.unique_id ?? '').replace(/^@/, '').toLowerCase();
+        const comment = String(data.comment ?? data.text ?? '').trim();
+        if (!/^\d{1,2}$/.test(comment)) return false;
+        const player = activePlayers.find(p => String(p.username ?? p.name).replace(/^@/, '').toLowerCase() === rawName);
+        if (!player) return false;
+        tryClaimSeat(player, comment);
+        return true;
+      }
+
+      window.VARA_MUSICAL_CHAIRS = {
+        setPlayers,
+        handleTikTokComment,
+        getState: () => ({ round: currentRound, players: activePlayers.length, chairs: chairCount, claiming: isClaiming, spinning: isSpinning })
+      };
+      window.addEventListener('vara:tiktok-comment', event => handleTikTokComment(event.detail));
+
+      // INITIAL RENDER
+      renderBoard();
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest py-space-lg"><div class="w-full px-space-md lg:px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant font-label-data text-label-data"><div class="flex items-center gap-space-md"><span class="uppercase tracking-wider text-on-surface font-label-broadcast text-label-broadcast">VARA BROADCAST NETWORK</span><span class="text-outline-variant">|</span><span>ULTRA-LOW LATENCY TITAN FEED #04</span></div><div class="flex items-center gap-space-lg"><span class="text-on-surface-variant">SYNC STATUS: LOCK-SYNCHRONIZED</span><span class="text-outline-variant">•</span><span class="text-on-surface-variant">© 2024 VARA GAMING ARENA. ALL RIGHTS RESERVED.</span></div></div></footer></body></html>
